@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-// DDA LINE DRAW ALGORITHM
 #include "FdF.h"
 #include "mlx.h"
 
@@ -24,24 +22,30 @@ void draw_line_dda(t_data *data, int x1, int y1, int x2, int y2)
 	}
 }
 
-// BRASENHAM LINE DRAW ALGORITHM
 void draw_line_bras(t_data *data, int x1, int y1, int x2, int y2)
 {
 	int dx = abs(x2 - x1);
 	int dy = abs(y2 - y1);
-	int p = 2 * dx - dy;
-	while (x1 < x2)
+	int sx = x1 < x2 ? 1 : -1;
+	int sy = y1 < y2 ? 1 : -1;
+	int err = dx - dy;
+	int e2;
+
+	while (1)
 	{
 		my_put_pixel(data->img, x1, y1, rgb_to_int(255, 255, 255));
-		if (p < 0)
-			p = p + 2 * dx;
-		else
+		if (x1 == x2 && y1 == y2)
+			break;
+		e2 = 2 * err;
+		if (e2 > -dy)
 		{
-			p = p + 2 * dx - 2 * dy;
-			y1++;
+			err -= dy;
+			x1 += sx;
 		}
-		x1++;
+		if (e2 < dx)
+		{
+			err += dx;
+			y1 += sy;
+		}
 	}
 }
-=======
->>>>>>> parent of fbd95fa... added dda line drawing algorithm

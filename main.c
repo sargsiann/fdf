@@ -1,24 +1,8 @@
-
 #include <stdio.h>
+#include "FdF.h"
 #include <stdlib.h>
 #include "mlx.h"
 
-typedef struct s_img
-{
-	void *img;
-	char *addr;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-} t_img;
-
-
-typedef struct s_data
-{
-	void *mlx;
-	void *win;
-	t_img *img;
-} t_data;
 
 int rgb_to_int(int r, int g, int b)
 {
@@ -81,11 +65,13 @@ int mouse_handler(int button, int x, int y, t_data *data)
 	printf("Button: %d, x: %d, y: %d\n", button, x, y);
 	if (button == 1)
 	{
-		draw_square(data->img, x, y, 50, rgb_to_int(255, 0, 0));
+		printf("dda\n");
+		draw_line_dda(data, 0, 0, x, y);
 	}
 	if (button == 2)
 	{
-		draw_square(data->img, x, y, 50, rgb_to_int(0, 255, 0));
+		printf("bras\n");
+		draw_line_bras(data, 0, 0, x, y);
 	}
 
 	return (0);
