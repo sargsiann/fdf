@@ -29,7 +29,8 @@ int expose_handler(t_data *data);
 int loop_handler(t_data *data);
 int my_put_pixel(t_img *img, int x, int y, int color);
 int draw_square(t_img *img, int x, int y, int size, int color);
-void draw_line_dda(t_data *, int x1, int y1, int x2, int y2);
+void draw_line_dda(t_data *a, int x1, int y1, int x2, int y2);
+void draw_line_bras(t_data *a, int x1, int y1, int x2, int y2);
 
 
 #endif
