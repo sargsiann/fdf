@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // DDA LINE DRAW ALGORITHM
 #include "FdF.h"
 #include "mlx.h"
@@ -42,3 +43,5 @@ void draw_line_bras(t_data *data, int x1, int y1, int x2, int y2)
 		x1++;
 	}
 }
+=======
+>>>>>>> parent of fbd95fa... added dda line drawing algorithm
