@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "mlx.h"
@@ -116,4 +115,4 @@ int main()
 	mlx_expose_hook(data.win, expose_handler, &data);
 	mlx_loop(data.mlx);
 }
->>>>>>> parent of fbd95fa... added dda line drawing algorithm
+
