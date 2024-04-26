@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:29:34 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/04/26 20:10:27 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/04/26 21:07:13 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+	int	color;
+}			t_point;
+
 typedef struct s_data
 {
 	void	*mlx;
@@ -45,6 +52,7 @@ int			loop_hooks(t_data *data);
 int			handle_errors(int argc, char **argv);
 int			check_parsed_map(char *data);
 char		*create_map_char(char *file_name);
+char		**create_map_matrix(char *map);
 
 
 #endif
