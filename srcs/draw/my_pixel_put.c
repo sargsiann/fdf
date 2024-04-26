@@ -13,8 +13,8 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 	}
 	else
 	{
-		dst[2] = color;
-		dst[1] = color >> 8;
 		dst[0] = color >> 16;
+		dst[1] = color >> 8;
+		dst[2] = color;
 	}
 }
