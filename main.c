@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:55:45 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/04/26 17:59:01 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:55:26 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 int	main(int argc, char **argv)
 {
 	t_data	data;
+	char	*map = NULL;
 
-	if (handle_errors(argc, argv) == 0)
+	if (handle_errors(argc) == 0)
+	{
 		return (1);
+	}
+	map = create_map_char(argv[1]);
+	if (check_parsed_map(map) == 0)
+	{
+		return (1);
+	}
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, 1920, 1080, "FdF");
 	data.img = (t_img *)malloc(sizeof(t_img));
