@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:32:26 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/04/28 23:59:42 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:37:26 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int validate_map(char **map)
     if (!check_for_order(map))
 	{
 		perror("Invalid point order");
+		return (0);
+	}
+	if (!check_for_empty(map))
+	{
+		perror("Empty values in Map");
 		return (0);
 	}
     return (1);

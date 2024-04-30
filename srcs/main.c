@@ -15,4 +15,5 @@ int main(int argc, char *argv[])
     if (validate_map(data.map) == 0)
       return (1);
     init(&data);
+	
 }
