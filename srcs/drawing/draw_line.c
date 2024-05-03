@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:58:47 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/04/30 22:15:50 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/05/03 17:02:03 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	draw_line(t_data *data, t_line *line)
 {
-		
+			
 }
