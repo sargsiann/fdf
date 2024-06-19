@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:12:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 23:55:18 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/06/20 00:12:45 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 
 typedef struct s_color
 {
-	int	r;
-	int	g;
-	int	b;
+	int	red;
+	int	green;
+	int	blue;
 	int	a;
 }	t_color;
 
@@ -51,16 +51,16 @@ typedef	struct s_mlx
 
 typedef struct	s_point
 {
-	int	x;
-	int	y;
-	int	z;
-	t_color	color;
+	int		x;
+	int		y;
+	int		z;
+	t_color	*color;
 }	t_point;
 
 typedef	struct	s_line
 {
-	t_point point1;
-	t_point	point2;
+	t_point *point1;
+	t_point	*point2;
 	int		sx;
 	int		sy;
 	int		dx;
@@ -83,7 +83,7 @@ void	init_mlx(t_mlx *fdf);
 int		key_hook(int keycode, t_mlx *fdf);
 int		close_win(t_mlx *fdf);
 void	my_mlx_put(t_img *image, int x, int y, int color);
-int		color(int r, int g, int b, int a);
+int		rgb_to_int(int r, int g, int b, int a);
 int		red(int color, int endian);
 int		green(int color, int endian);
 int		blue(int color, int endian);

@@ -6,13 +6,13 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 23:02:01 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 23:12:15 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/06/20 00:13:02 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+// #include "../../includes/fdf.h"
 
-void	draw_map(t_line *line, t_mlx *mlx)
-{
+// void	draw_map(t_line *line, t_mlx *mlx)
+// {
 	
-}
+// }

@@ -6,15 +6,15 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:49:05 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 23:47:54 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/06/20 00:12:27 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-int	color(int r, int g, int b, int a)
+int	rgb_to_int(int r, int g, int b, int a)
 {
-	return (r >> 24 | g >> 16 | b >> 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
 int	red(int color, int endian)
