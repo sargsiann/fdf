@@ -4,7 +4,9 @@ CC = cc
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -I MLX_FLAGS
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
+
+MATH_FLAG = -lm
 
 SRCS = $(shell find srcs -name "*.c")
 
@@ -23,7 +25,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(DEPS)
 	$(MLX_MAKE)
-	$(CC) $(OBJS) $(CFLAGS) mlx/libmlx.a $(MLX_FLAGS) -I includes -o fdf
+	$(CC) $(OBJS) $(CFLAGS) $(MATH_FLAG) -fsanitize=address mlx/libmlx.a $(MLX_FLAGS) -I includes -o fdf
 
 clean : 
 	rm -rf $(OBJS)

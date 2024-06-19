@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:12:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 20:43:48 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/06/19 23:55:18 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,19 @@
 # include "gnl.h"
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 
 # define DEF_DIM 100
 # define DEF_ANGLE 120
-# define DEF_COLOR 0x00FF00
+# define DEF_COLOR 0xFFFFFF
 
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+	int	a;
+}	t_color;
 
 typedef struct s_img
 {
@@ -46,17 +54,19 @@ typedef struct	s_point
 	int	x;
 	int	y;
 	int	z;
-	int	color;
+	t_color	color;
 }	t_point;
 
 typedef	struct	s_line
 {
 	t_point point1;
 	t_point	point2;
-	int		stepx;
-	int		stepy;
+	int		sx;
+	int		sy;
 	int		dx;
 	int		dy;
+	int		color;
+	int		err;
 	int		angle;
 }	t_line;
 
@@ -72,5 +82,10 @@ void	free_map(char **map);
 void	init_mlx(t_mlx *fdf);
 int		key_hook(int keycode, t_mlx *fdf);
 int		close_win(t_mlx *fdf);
+void	my_mlx_put(t_img *image, int x, int y, int color);
+int		color(int r, int g, int b, int a);
+int		red(int color, int endian);
+int		green(int color, int endian);
+int		blue(int color, int endian);
 
 # endif

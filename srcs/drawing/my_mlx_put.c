@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   my_mlx_put.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 19:25:00 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 22:52:14 by dasargsy         ###   ########.fr       */
+/*   Created: 2024/06/19 20:50:31 by dasargsy          #+#    #+#             */
+/*   Updated: 2024/06/19 21:16:36 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-int	key_hook(int keycode, t_mlx *fdf)
+void	my_mlx_put(t_img *image, int x, int y, int color)
 {
-	if (keycode == 53)
+	char	*address;
+
+	address = image->address + (image->bpp * x) / 8 + y *
+	image->line_len;
+	if (image->endian == 0)
 	{
-		free_map(fdf->map);
-		mlx_clear_window(fdf->mlx, fdf->mlx_window);
-		mlx_destroy_window(fdf->mlx, fdf->mlx_window);
-		free(fdf);
-		exit(0);
+		address[0] = color;
+		address[1] = color >> 8;
+		address[2] = color >> 16;
+		address[3] = color >> 24;
 	}
-	return (0);
+	else
+	{
+		address[0] = color >> 24;
+		address[1] = color >> 16;
+		address[2] = color >> 8;
+		address[3] = color;
+	}
 }
