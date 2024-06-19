@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:12:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/20 00:12:45 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/06/20 01:54:47 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,13 @@ int		rgb_to_int(int r, int g, int b, int a);
 int		red(int color, int endian);
 int		green(int color, int endian);
 int		blue(int color, int endian);
+void	draw_line(t_line *line, t_mlx *mlx);
+void	draw_map(t_line *line, t_mlx *mlx);
+int		hex_to_int(char *hex);
+void	init_point(t_point *point, char *line, int x, int y);
+void	get_vertical_n(t_line *line, int x, int y, char *line_str);
+void	get_horizontal_n(t_line *line, int x, int y, char *line_str);
+int		loop_hook(t_mlx *fdf, t_line *line);
+
 
 # endif

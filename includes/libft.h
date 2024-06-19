@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:44:07 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 20:07:05 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/06/20 00:33:01 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*ft_strchr(const char *str, int c);
 int		ft_isdigit(int c);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
+int		ft_atoi(const char *str);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:23:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 23:01:48 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/06/20 01:53:37 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	init_mlx(t_mlx *fdf)
 			&fdf->image->endian);
 	mlx_key_hook(fdf->mlx_window, key_hook, fdf);
 	mlx_hook(fdf->mlx_window, 17, 0, close_win, fdf);
+	mlx_loop_hook(fdf->mlx, loop_hook, fdf);
 	mlx_loop(fdf->mlx);
 }
