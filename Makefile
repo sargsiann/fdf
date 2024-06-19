@@ -4,7 +4,7 @@ CC = cc
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -I MLX_FLAGS
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 
 SRCS = $(shell find srcs -name "*.c")
 

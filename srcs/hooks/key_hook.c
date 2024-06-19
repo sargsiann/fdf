@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeing.c                                          :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 17:02:31 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 20:43:51 by dasargsy         ###   ########.fr       */
+/*   Created: 2024/06/19 19:25:00 by dasargsy          #+#    #+#             */
+/*   Updated: 2024/06/19 20:31:17 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	free_map(char **map)
+int	key_hook(int keycode, t_mlx *fdf)
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
+	if (keycode == 53)
 	{
-		free(map[i]);
-		i++;
+		free_map(fdf->map);
+		mlx_clear_window(fdf->mlx, fdf->mlx_window);
+		mlx_destroy_window(fdf->mlx, fdf->mlx_window);
+		free(fdf);
+		exit(0);
 	}
-	free(map);
-}
-
-int	close_win(t_mlx *fdf)
-{
-	free_map(fdf->map);
-	mlx_clear_window(fdf->mlx, fdf->mlx_window);
-	mlx_destroy_window(fdf->mlx, fdf->mlx_window);
-	free(fdf);
-	exit(0);
 	return (0);
 }
