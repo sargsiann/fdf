@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:12:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/20 01:54:47 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:26:20 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,11 @@
 # include <fcntl.h>
 # include <math.h>
 
+# define DEF_WIN_X 1920
+# define DEF_WIN_Y 1080
 # define DEF_DIM 100
 # define DEF_ANGLE 120
 # define DEF_COLOR 0xFFFFFF
-
-typedef struct s_color
-{
-	int	red;
-	int	green;
-	int	blue;
-	int	a;
-}	t_color;
 
 typedef struct s_img
 {
@@ -49,25 +43,28 @@ typedef	struct s_mlx
 	char	**map;
 }	t_mlx;
 
-typedef struct	s_point
+typedef struct t_point
 {
-	int		x;
-	int		y;
-	int		z;
-	t_color	*color;
+	int	x;
+	int	i;
+	int	j;
 }	t_point;
 
 typedef	struct	s_line
 {
-	t_point *point1;
-	t_point	*point2;
-	int		sx;
-	int		sy;
-	int		dx;
-	int		dy;
-	int		color;
-	int		err;
-	int		angle;
+	int	x1;
+	int	y1;
+	int	x2;
+	int	y2;
+	int	z1;
+	int	z2;
+	int	color1;
+	int	color2;
+	int	sx;
+	int	sy;
+	int	dx;
+	int	dy;
+	int	err;
 }	t_line;
 
 int		validation(int argc, char **argv);
@@ -82,18 +79,19 @@ void	free_map(char **map);
 void	init_mlx(t_mlx *fdf);
 int		key_hook(int keycode, t_mlx *fdf);
 int		close_win(t_mlx *fdf);
-void	my_mlx_put(t_img *image, int x, int y, int color);
+void	my_mlx_put(t_mlx *mlx, int x, int y, int color);
 int		rgb_to_int(int r, int g, int b, int a);
 int		red(int color, int endian);
 int		green(int color, int endian);
 int		blue(int color, int endian);
 void	draw_line(t_line *line, t_mlx *mlx);
-void	draw_map(t_line *line, t_mlx *mlx);
+void	draw_map(t_mlx *mlx);
 int		hex_to_int(char *hex);
-void	init_point(t_point *point, char *line, int x, int y);
-void	get_vertical_n(t_line *line, int x, int y, char *line_str);
-void	get_horizontal_n(t_line *line, int x, int y, char *line_str);
-int		loop_hook(t_mlx *fdf, t_line *line);
+void	get_horizontal_n(t_point *point, char *line_str, t_mlx *mlx);
+void	get_vertical_n(t_point *point, char *line_str, t_mlx *mlx);
+int		loop_hook(t_mlx *fdf);
+void	get_izometric(t_line *line);
+void	get_dimetric(t_line *line);
 
 
 # endif

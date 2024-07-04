@@ -5,66 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 20:20:04 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/20 01:57:03 by dasargsy         ###   ########.fr       */
+/*   Created: 2024/06/20 04:31:22 by dasargsy          #+#    #+#             */
+/*   Updated: 2024/07/04 18:27:37 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-static	void	init_line(t_line *line)
+void	init_line(t_line *line)
 {
-	line->dx = abs(line->point2->x - line->point1->x);
-	line->dy = abs(line->point2->y - line->point1->y);
-	if (line->point1->x < line->point2->x)
-		line->sx = 1;
-	else
+	if (line->x1 > line->x2)
 		line->sx = -1;
-	if (line->point1->y < line->point2->y)
-		line->sy = 1;
 	else
+		line->sx = 1;
+	if (line->y1 > line->y2)
 		line->sy = -1;
+	else
+		line->sy = 1;
+	line->color1 = DEF_COLOR;
+	line->color2 = DEF_COLOR;
+	line->dx = abs(line->x2 - line->x1);
+	line->dy = abs(line->y2 - line->y1);
 	line->err = line->dx - line->dy;
 }
 
-static	int get_color(t_line *line, int t)
+static int get_gradient(t_line *line, float t)
 {
-	int	color;
+	int	red;
+	int	green;
+	int	blue;
 
-	line->point1->color->red = line->point1->color->red + 
-	t * (line->point2->color->red - line->point1->color->red);
-	line->point1->color->green = line->point1->color->green +
-	t * (line->point2->color->green - line->point1->color->green);
-	line->point1->color->blue = line->point1->color->blue +
-	t * (line->point2->color->blue - line->point1->color->blue);
-	color = rgb_to_int(line->point1->color->red, line->point1->color->green,
-	line->point1->color->blue, line->point1->color->a);
-	return (color);
+	line->color1 = 0x00ffFF;
+	line->color2 = 0xFF00ff;
+	red = (line->color1 >> 16) + ((line->color2 >> 16) - (line->color1 >> 16)) * t;
+	green = (line->color1 >> 8 & 0xFF) + ((line->color2 >> 8 & 0xFF) - (line->color1 >> 8 & 0xFF)) * t;
+	blue = (line->color1 & 0xFF) + ((line->color2 & 0xFF) - (line->color1 & 0xFF)) * t;
+	return ((red << 16) + (green << 8) + blue);
 }
 
 void	draw_line(t_line *line, t_mlx *mlx)
 {
-	int	grad_var;
-	int	d;
+	float	dim;
+	int		i;
+	int		color;
 
-	d = (int )sqrt(pow(line->dx, 2) + pow(line->dy, 2));
-	grad_var = 0;
+	dim = (float )sqrt(pow(line->x2 - line->x1, 2) + pow(line->y2 - line->y1, 2));
+	i = 0;
+	color = 0;
 	init_line(line);
-	while (line->point1->x != line->point2->x
-		|| line->point1->y != line->point2->y)
+	while (1)
 	{
-		line->color = get_color(line, grad_var / d);
-		my_mlx_put(mlx->image, line->point1->x, line->point1->y, line->color);
-		if (2 * line->err > -line->dy)
+		if (line->x1 == line->x2 && line->y1 == line->y2)
+			break ;
+		if (line->err * 2 > -line->dy)
 		{
 			line->err -= line->dy;
-			line->point1->x += line->sx;
+			line->x1 += line->sx;
 		}
-		if (2 * line->err < line->dx)
+		if (line->err * 2 < line->dx) 
 		{
 			line->err += line->dx;
-			line->point1->y += line->sy;
+			line->y1 += line->sy;
 		}
-		grad_var++;
+		color = get_gradient(line, i / dim);
+		my_mlx_put(mlx, line->x1, line->y1, color);
+		i++;
 	}
 }

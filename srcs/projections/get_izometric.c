@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   get_izometric.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 18:30:23 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/01 09:15:10 by dasargsy         ###   ########.fr       */
+/*   Created: 2024/07/04 18:01:03 by dasargsy          #+#    #+#             */
+/*   Updated: 2024/07/04 18:27:30 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-static	int	includes(char c, char *pattern)
+void	get_izometric(t_line *line)
 {
-	int	i;
+	int	prev_x1;
+	int	prev_x2;
+	int	prev_y1;
+	int	prev_y2;
 
-	i = 0;
-	while (pattern[i])
-	{
-		if (pattern[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	move(char *str, char *by_pattern)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && includes(str[i], by_pattern))
-		i++;
-	return (i);
+	prev_x1 = line->x1;
+	prev_x2 = line->x2;
+	prev_y1 = line->y1;
+	prev_y2 = line->y2;
+	line->x1 = (prev_x1 - prev_y1) * cos(0.523599);
+	line->x2 = (prev_x2 - prev_y2) * cos(0.523599);
+	line->y1 = (prev_x1 + prev_y1) * sin(0.523599) - line->z1;
+	line->y2 = (prev_x2 + prev_y2) * sin(0.523599) - line->z2;
 }

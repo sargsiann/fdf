@@ -5,45 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 23:02:01 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/20 02:04:36 by dasargsy         ###   ########.fr       */
+/*   Created: 2024/06/20 04:22:41 by dasargsy          #+#    #+#             */
+/*   Updated: 2024/07/04 17:10:21 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	draw_map(t_line *line, t_mlx *mlx)
+void	draw_map(t_mlx *mlx)
 {
-	int	i;
-	int	j;
-	int	x;
+	t_point	point;
+	int		k;
 
-	line = malloc(sizeof(line));
-	i = 0;
-	j = 0;
-	x = 0;
-	while (mlx->map[i])
+	point.x = 0;
+	point.i = DEF_WIN_Y / 2 - 100;
+	point.j = 0;
+	k = 0;
+	while (mlx->map[k])
 	{
-		j = 0;
-		x = 0;
-		while (mlx->map[i][j])
+		point.j = 0;
+		point.x = 400;
+		while (mlx->map[k][point.j])
 		{
-			if (ft_isdigit(mlx->map[i][j]))
+			if (ft_isdigit(mlx->map[k][point.j]))
 			{
-				// if (mlx->map[i] + 1 != NULL)
-					// get_vertical_n(line, x, i, mlx->map[i] + j);
-				if (mlx->map[i][j + 1] != 0)
-				{
-					get_horizontal_n(line, x, i, mlx->map[i] + j);
-				}
-				draw_line(line, mlx);
-				j += move(mlx->map[i] + j, "0123456789x,");
-				if (mlx->map[i][j] == 0)
-					break ;
-				x++;
+				get_horizontal_n(&point, mlx->map[k], mlx);
+				if (mlx->map[k + 1])
+					get_vertical_n(&point, mlx->map[k], mlx);
+				point.x += 50;
 			}
-			j++;
+			if (mlx->map[k][point.j] == '\0')
+				break ;
+			point.j++;
 		}
-		i++;
+		point.i += 50;
+		k++;
 	}
 }

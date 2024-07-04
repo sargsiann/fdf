@@ -2,9 +2,9 @@ NAME = fdf
 
 CC = cc 
 
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -I MLX_FLAGS
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -I MLX_FLAGS 
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
 MATH_FLAG = -lm
 

@@ -5,31 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 20:50:31 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 21:16:36 by dasargsy         ###   ########.fr       */
+/*   Created: 2024/06/20 06:10:13 by dasargsy          #+#    #+#             */
+/*   Updated: 2024/07/01 09:02:22 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	my_mlx_put(t_img *image, int x, int y, int color)
+void	my_mlx_put(t_mlx *mlx, int x, int y, int color)
 {
-	char	*address;
+	char	*dst;
 
-	address = image->address + (image->bpp * x) / 8 + y *
-	image->line_len;
-	if (image->endian == 0)
+	dst = NULL;
+	if (x < 0 || x >= DEF_WIN_X || y < 0 || y >= DEF_WIN_Y)
+		return ;
+	dst = mlx->image->address +
+	(y * mlx->image->line_len + x * (mlx->image->bpp / 8));
+	if (mlx->image->endian == 0)
 	{
-		address[0] = color;
-		address[1] = color >> 8;
-		address[2] = color >> 16;
-		address[3] = color >> 24;
+		dst[0] = color;
+		dst[1] = color >> 8;
+		dst[2] = color >> 16;
 	}
 	else
 	{
-		address[0] = color >> 24;
-		address[1] = color >> 16;
-		address[2] = color >> 8;
-		address[3] = color;
+		dst[0] = color >> 16;
+		dst[1] = color >> 8;
+		dst[2] = color;
 	}
 }
