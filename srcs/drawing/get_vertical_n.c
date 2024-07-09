@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 16:17:26 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/01 11:12:12 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:23:55 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_point1(t_line *line, t_point *point, char *line_str)
 		line->color1 = hex_to_int(&line_str[point->j]);
 	}
 	else
-		line->color1 = DEF_COLOR;
+		line->color1 = 0x0000ff;
 }
 
 static void	get_point2(t_line *line, t_point *point, char *line_str)
@@ -53,7 +53,9 @@ static void	get_point2(t_line *line, t_point *point, char *line_str)
 		line->color2 = hex_to_int(&line_str[point->j]);
 	}
 	else
-		line->color2 = DEF_COLOR;
+	{
+		line->color2 = 0xff0000;
+	}
 }
 
 void	get_vertical_n(t_point *point, char *line_str, t_mlx *mlx)

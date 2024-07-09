@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 04:31:22 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/04 18:27:37 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:25:34 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void	init_line(t_line *line)
 		line->sy = -1;
 	else
 		line->sy = 1;
-	line->color1 = DEF_COLOR;
-	line->color2 = DEF_COLOR;
+	if (line->color1 == 0)
+		line->color1 = DEF_COLOR;
+	if (line->color2 == 0)
+		line->color2 = DEF_COLOR;
 	line->dx = abs(line->x2 - line->x1);
 	line->dy = abs(line->y2 - line->y1);
 	line->err = line->dx - line->dy;
@@ -35,8 +37,7 @@ static int get_gradient(t_line *line, float t)
 	int	green;
 	int	blue;
 
-	line->color1 = 0x00ffFF;
-	line->color2 = 0xFF00ff;
+	
 	red = (line->color1 >> 16) + ((line->color2 >> 16) - (line->color1 >> 16)) * t;
 	green = (line->color1 >> 8 & 0xFF) + ((line->color2 >> 8 & 0xFF) - (line->color1 >> 8 & 0xFF)) * t;
 	blue = (line->color1 & 0xFF) + ((line->color2 & 0xFF) - (line->color1 & 0xFF)) * t;
