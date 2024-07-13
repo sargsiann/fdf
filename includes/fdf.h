@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:12:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/04 18:26:20 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:33:16 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ int		check_file_name(char *file);
 char	**get_map(char *file);
 void	free_map(char **map);
 int		symbol_check(char	**map);
-int		row_size_check(char **map);
 int		move(char *str, char *by_pattern);
-int		check_by_order(char	**map);
 void	free_map(char **map);
 void	init_mlx(t_mlx *fdf);
 int		key_hook(int keycode, t_mlx *fdf);
@@ -90,8 +88,6 @@ int		hex_to_int(char *hex);
 void	get_horizontal_n(t_point *point, char *line_str, t_mlx *mlx);
 void	get_vertical_n(t_point *point, char *line_str, t_mlx *mlx);
 int		loop_hook(t_mlx *fdf);
-void	get_izometric(t_line *line);
-void	get_dimetric(t_line *line);
-
+void	get_izometric(t_line *line, t_mlx *mlx);
 
 # endif

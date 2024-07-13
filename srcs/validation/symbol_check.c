@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:44:25 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 17:54:25 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:32:30 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	symbol_check(char	**map)
 
 	i = 0;
 	j = 0;
-	hex = "0123456789abcdef ,x";
+	hex = "0123456789abcdefABCDEF ,x-";
 	while (map[i])
 	{
 		j = 0;
