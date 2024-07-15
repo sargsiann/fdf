@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 16:17:26 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/13 20:08:16 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:47:23 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static void	get_point1(t_line *line, t_point *point, char *line_str, int j_tmp)
 {
 	line->x1 = point->x;
 	line->y1 = point->i;
-	line->z1 = ft_atoi(&line_str[j_tmp]) * 10;
-	j_tmp += move(&line_str[j_tmp],"-0123456789,");
+	line->z1 = ft_atoi(&line_str[j_tmp]) * 8;
+	j_tmp += move(&line_str[j_tmp], "-0123456789,");
 	if (line_str[j_tmp] == 'x' || line_str[j_tmp] == 'X')
 	{
-		j_tmp+=1;
+		j_tmp += 1;
 		line->color1 = hex_to_int(&line_str[j_tmp]);
 	}
 	else
@@ -37,7 +37,7 @@ static void	get_point2(t_line *line, t_point *point, char *line_str, int j_tmp)
 	while (line_str[i])
 	{
 		i++;
-		if (ft_isdigit(line_str[i]) || line_str[i] == '-' )
+		if (ft_isdigit(line_str[i]) || line_str[i] == '-')
 			tmp--;
 		if (tmp == 0)
 			break ;
@@ -45,8 +45,8 @@ static void	get_point2(t_line *line, t_point *point, char *line_str, int j_tmp)
 	line_str += i - 1;
 	line->x2 = point->x;
 	line->y2 = point->i + 15;
-	line->z2 = ft_atoi(&line_str[j_tmp]) * 10;
-	j_tmp += move(&line_str[j_tmp],"-0123456789,");
+	line->z2 = ft_atoi(&line_str[j_tmp]) * 8;
+	j_tmp += move(&line_str[j_tmp], "-0123456789,");
 	if (line_str[j_tmp] == 'x' || line_str[j_tmp] == 'X')
 	{
 		j_tmp += 1;

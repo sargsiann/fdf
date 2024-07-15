@@ -6,17 +6,17 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:51:40 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/13 17:32:29 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:42:45 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	main(int	argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 
-	mlx	= NULL;
+	mlx = NULL;
 	if (argc != 2 || !check_file_name(argv[1]))
 		return (1);
 	mlx = malloc(sizeof(mlx));

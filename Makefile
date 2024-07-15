@@ -4,7 +4,7 @@ CC = cc
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -I MLX_FLAGS 
 
-CFLAGS = 
+CFLAGS = -Wall -Wextra -Werror
 
 MATH_FLAG = -lm
 
@@ -33,7 +33,6 @@ clean :
 
 fclean : clean
 	rm fdf
-	rm mlx/libmlx.a
 
 re : fclean all
 

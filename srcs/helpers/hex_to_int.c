@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 00:52:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/01 11:43:39 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:48:57 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ static int	index_of(char *str, char c)
 
 int	hex_to_int(char *hex)
 {
-	int	i;
-	int	res;
-	char *symbols = "0123456789ABCDEF";
-	int	k;
+	int		i;
+	int		res;
+	char	*symbols;
+	int		k;
 
 	i = 0;
 	res = 0;
 	k = 1;
+	symbols = "0123456789ABCDEF";
 	while (hex[i] && hex[i] != ' ')
 		i++;
 	i--;

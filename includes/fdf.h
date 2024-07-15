@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:12:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/13 17:33:16 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:46:19 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef	struct s_mlx
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*mlx_window;
@@ -50,7 +50,7 @@ typedef struct t_point
 	int	j;
 }	t_point;
 
-typedef	struct	s_line
+typedef struct s_line
 {
 	int	x1;
 	int	y1;
@@ -90,4 +90,4 @@ void	get_vertical_n(t_point *point, char *line_str, t_mlx *mlx);
 int		loop_hook(t_mlx *fdf);
 void	get_izometric(t_line *line, t_mlx *mlx);
 
-# endif
+#endif

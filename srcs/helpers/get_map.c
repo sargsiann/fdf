@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:47:28 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/06/19 21:34:11 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:48:22 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**get_map(char *filename)
 {
 	char	**map;
 	int		fd;
-	
+
 	map = NULL;
 	fd = open(filename, O_RDONLY);
 	map = get_2d_map(fd);
