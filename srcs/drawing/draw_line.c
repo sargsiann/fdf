@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 04:31:22 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/15 19:15:41 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/16 11:06:13 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	init_line(t_line *line)
 
 static void	logic(t_line *line, t_mlx *mlx, int i, float dim)
 {
-	my_mlx_put(mlx, line->x1, line->y1, get_gradient(line, (float)i / dim));
 	if (line->err * 2 > -line->dy)
 	{
 		line->err -= line->dy;
@@ -62,6 +61,7 @@ static void	logic(t_line *line, t_mlx *mlx, int i, float dim)
 		line->err += line->dx;
 		line->y1 += line->sy;
 	}
+	my_mlx_put(mlx, line->x1, line->y1, get_gradient(line, (float)i / dim));
 }
 
 void	draw_line(t_line *line, t_mlx *mlx)
@@ -81,9 +81,9 @@ void	draw_line(t_line *line, t_mlx *mlx)
 	init_line(line);
 	while (1)
 	{
+		logic(line, mlx, i, dim);
 		if (line->x1 == line->x2 && line->y1 == line->y2)
 			break ;
-		logic(line, mlx, i, dim);
 		i++;
 	}
 }
