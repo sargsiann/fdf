@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:44:07 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/15 20:19:40 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/16 12:08:49 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 size_t	ft_strlen(char const *c);
 char	*ft_strdup(char const *s);
-char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char const *s, char c, int flag);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *str, int c);

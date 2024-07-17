@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 04:25:07 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/16 11:08:04 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/16 11:13:45 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	get_point1(t_line *line, t_point *point, char *line_str, int j_tmp)
 
 static void	get_point2(t_line *line, t_point *point, char *line_str, int j_tmp)
 {
-	line->x2 = point->x + 15;
+	line->x2 = point->x + 12;
 	line->y2 = point->i;
 	line->z2 = ft_atoi(&line_str[j_tmp]) * 8;
 	j_tmp += move(&line_str[j_tmp], "-0123456789,");

@@ -4,7 +4,7 @@ CC = cc
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -I MLX_FLAGS 
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
 MATH_FLAG = -lm
 
@@ -25,14 +25,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(DEPS)
 	$(MLX_MAKE)
-	$(CC) $(OBJS) $(CFLAGS) $(MATH_FLAG) -fsanitize=address mlx/libmlx.a $(MLX_FLAGS) -I includes -o fdf
+	$(CC) $(OBJS) $(CFLAGS) $(MATH_FLAG) mlx/libmlx.a $(MLX_FLAGS) -I includes -o fdf
 
 clean : 
 	rm -rf $(OBJS)
 	$(MLX_CLEAN)
 
-fclean : clean
-	rm fdf
+fclean : clean 
+	rm -rf fdf
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:12:50 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/15 18:46:19 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/16 11:16:46 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_line
 	int	err;
 }	t_line;
 
-int		validation(int argc, char **argv);
 int		check_file_name(char *file);
 char	**get_map(char *file);
 void	free_map(char **map);
@@ -78,10 +77,6 @@ void	init_mlx(t_mlx *fdf);
 int		key_hook(int keycode, t_mlx *fdf);
 int		close_win(t_mlx *fdf);
 void	my_mlx_put(t_mlx *mlx, int x, int y, int color);
-int		rgb_to_int(int r, int g, int b, int a);
-int		red(int color, int endian);
-int		green(int color, int endian);
-int		blue(int color, int endian);
 void	draw_line(t_line *line, t_mlx *mlx);
 void	draw_map(t_mlx *mlx);
 int		hex_to_int(char *hex);

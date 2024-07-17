@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 04:22:41 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/16 11:11:51 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:41:42 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	logic(t_point *point, t_mlx *mlx, int k)
 {
-	point->j = 0;
 	point->x = 800;
 	while (mlx->map[k][point->j])
 	{
@@ -45,6 +44,7 @@ void	draw_map(t_mlx *mlx)
 	k = 0;
 	while (mlx->map[k])
 	{
+		point.j = 0;
 		logic(&point, mlx, k);
 		k++;
 	}

@@ -6,7 +6,7 @@
 /*   By: dasargsy <dasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:02:31 by dasargsy          #+#    #+#             */
-/*   Updated: 2024/07/15 18:48:05 by dasargsy         ###   ########.fr       */
+/*   Updated: 2024/07/16 17:53:42 by dasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void	free_map(char **map)
 
 int	close_win(t_mlx *fdf)
 {
-	free_map(fdf->map);
-	mlx_clear_window(fdf->mlx, fdf->mlx_window);
 	mlx_destroy_window(fdf->mlx, fdf->mlx_window);
+	mlx_destroy_image(fdf->mlx, fdf->image->img);
+	free(fdf->image);
+	free_map(fdf->map);
 	free(fdf);
 	exit(0);
 	return (0);
